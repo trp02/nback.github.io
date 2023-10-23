@@ -8,26 +8,28 @@ const gameOverElement = document.createElement('div');
 gameOverElement.setAttribute('id', 'game-over');
 
 let timer;
-let history = ['', '', ''];
+let history = ['', '', '','','',''];
 const characters = ["🐶", "🐱", "🐭", "🐹", "🐰", "🦊", "🐻", "🐨", "🐯", "🦁", "🐮", "🐷", "🐸", "🐔", "🐧", "🦆", "🦉", "🦇", "🦅", "🦋"];
 let speed = 0;
 let i = 0;
 let flag = 0;
-const window_size = 2;
+const window_size = 6;
+const timePerLevel = 240;
+let previousIndex;
 let record = {
     "correct": 0,
     "incorrect": 0
 }
 
 let seconds = 0;
-let gameActive = false; // Initially, the game is not active
+let gameActive = true; // Initially, the game is active
 
 function updateTimer() {
     if (gameActive) {
         timerElement.textContent = seconds + 's';
         seconds++;
         
-        if (seconds >= 60) {
+        if (seconds >= timePerLevel) {
             gameActive = false; // Game over
             clearInterval(timer);
             displayGameOver();
@@ -40,7 +42,7 @@ function displayGameOver() {
     gameOverElement.style.color = 'red';
     gameOverElement.style.fontSize = '36px';
     document.getElementById('game-container').appendChild(gameOverElement);
-    if (seconds >= 60) {
+    if (seconds >= 300) {
           // Calculate the position for the pop-up window to be centered
           const width = 400; // Adjust as needed
           const height = 200; // Adjust as needed
@@ -51,7 +53,22 @@ function displayGameOver() {
           const popup = window.open('', 'PopupWindow', `width=${width},height=${height},left=${left},top=${top}`);
           
           // Display a message in the pop-up
-          popup.document.write('<h1>Game Over</h1>');
+          popup.document.write(`
+          <html>
+          <head>
+            <style>
+              body {
+                background-color: white; /* Change the background color */
+                color: #00BFFF; /* Change the text color */
+                font-family: Arial, sans-serif; /* Specify the font-family */
+              }
+            </style>
+          </head>
+          <body>
+            <h1>Congratulations!! You have passed all the Phase!!</h1>
+          </body>
+          </html>
+        `);
           popup.document.write('<p>Your game is over.</p>');
   
           // Close the pop-up after 5 seconds (adjust as needed)
@@ -78,18 +95,23 @@ function getRandomChar() {
     start = i % characters.length;
     end = (i + window_size) % characters.length;
     window = characters.slice(start, end);
-    if (flag == 2) {
+    if (flag == 6) {
         i += 1;
     }
     //let randomIndex = Math.floor(Math.random() * window.length);
     let randomIndex = Math.floor(Math.random() * (end - start + 1)) + start;
-    console.log(start + " to " + end);
-    return characters[randomIndex];
+    if (!previousIndex){
+        previousIndex = randomIndex;
+    }
+    else{
+        previousIndex = Math.random()< 0.5 ? previousIndex : randomIndex;
+    }
+    return characters[previousIndex];
 }
 
 function checkMatch(userSaidYes) {
     if (gameActive) {
-        const isMatch = history[0] === history[2];
+        const isMatch = history[0] === history[6];
         if (userSaidYes === isMatch) {
             record.correct += 1;
             resultDisplay.textContent = 'Correct!';
@@ -118,7 +140,11 @@ function nextCharacter() {
         charDisplay.textContent = newChar;
         history[0] = history[1];
         history[1] = history[2];
-        history[2] = newChar;
+        history[2]=history[3];
+        history[3]=history[4];
+        history[4]=history[5];
+        history[5]=history[6];
+        history[6] = newChar;
     }
 }
 
@@ -134,12 +160,16 @@ function decreaseTime() {
     if (gameActive) {
         const currentWidth = parseFloat(timeBar.style.width);
         if (currentWidth > 0) {
-            timeBar.style.width = (currentWidth - 0.2) + '%';// Decrease by 0.1% per interval. Makes it smoother
+            timeBar.style.width = (currentWidth - 0.3) + '%';// Decrease by 0.1% per interval. Makes it smoother
         } else {
             //checkMatch will clear current timer and start new one
         checkMatch(); //add to incorrect when timer runs out and move on 
         }
     }
+}
+//Exit button
+function redirectToIndex() {
+    window.location.href = 'index.html'; // Replace 'index.html' with the desired destination URL
 }
   //starts timer 
 function startTimer() {
@@ -147,38 +177,7 @@ function startTimer() {
     timeBar.style.width = '100%';
     timer = setInterval(decreaseTime, speed); //will adjust interval every [speed] seconds
 }
-
-// handles difficulty form submission
-document.getElementById("difficulty").addEventListener('submit', function (event) {
-    event.preventDefault();
-    var selectedDifficulty = document.querySelector('input[name="difficulty"]:checked');
-    if (selectedDifficulty) {
-        // Close window and record difficulty lvl
-        closeInstructions();
-        if (selectedDifficulty.value === "Easy") {
-            speed = 7; //timer will be 15 seconds
-        } else if (selectedDifficulty.value === "Medium") {
-            speed = 4; //7 seconds
-        } else if (selectedDifficulty.value === "Hard") {
-            speed = 2;//3 seconds
-        }
          //starts timer 
          gameActive = true;
          startTimer();
          nextCharacter();
-    }
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-    const modeToggle = document.getElementById('mode-toggle');
-    const stylesheet = document.getElementById('stylesheet');
-    modeToggle.addEventListener('change', function () {
-        if (modeToggle.checked) {
-               // Dark mode
-            stylesheet.href = 'styleDark.css';
-        } else {
-               // Light mode
-            stylesheet.href = 'style.css';
-        }
-    });
-});

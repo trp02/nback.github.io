@@ -8,7 +8,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('https://sharework-project.eu/wp-content/uploads/2020/02/Smart_Cognition_System-1000x500.png');
+    background-image: url('./assets/background.jpeg');
 }
 
 #game-container {
