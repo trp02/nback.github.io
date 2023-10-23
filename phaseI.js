@@ -51,7 +51,7 @@ function displayGameOver() {
           const top = (window.innerHeight - height) / 2;
   
           // Open a pop-up window in the center
-          const popup = window.open('', 'PopupWindow', `width=${width},height=${height},left=${left},top=${top}`);
+          const popup = window.open('', 'PopupWindow', `width=${width},height=${height},left=${left},top=${top},popup=yes`);
           
           // Display a message in the pop-up
           popup.document.write(`
@@ -59,9 +59,10 @@ function displayGameOver() {
           <head>
             <style>
               body {
-                background-color: white; /* Change the background color */
-                color: #00BFFF; /* Change the text color */
+                background-color: rgb(181, 241, 197); /* Change the background color */
+                color: blue; /* Change the text color */
                 font-family: Arial, sans-serif; /* Specify the font-family */
+                font-size: 10px;
               }
             </style>
           </head>

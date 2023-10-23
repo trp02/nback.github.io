@@ -2,8 +2,8 @@
 
 ## Play The Game 
 
-https://trp02.github.io/nback.github.io/ 
-
+[https://trp02.github.io/nback.github.io/](https://trp02.github.io/nback.github.io/) 
+Note: Make sure pop ups are allowed. 
 ![Game Preview](https://github.com/abastola0/SoftwareFoundations/assets/41137160/ed5c0e8d-dbf2-42b0-9e2e-e0073a9a85b3.png)
 
 *Image preview of the game*
@@ -63,9 +63,16 @@ We would like to extend our gratitude to:
 
 ### Reflection
 
-Throughout the development process, we encountered several challenges, including optimizing the algorithm and establishing appropriate difficulty levels. By adjusting the algorithm and extensively testing gameplay mechanics, we achieved a balanced and engaging player experience.
+The topic of the first meeting was deciding on the game. There were several options and games that we explored but the one we settled on was n-back. There are several examples of N back online but we wanted to create a version with our own twist. We also wanted to make the game easy to understand as the ones we found online were rather complicated and took quite a bit of time to fully understand.  There were several ways to put our own twist and the one we decided to go with was decreasing time and giving users the option to choose difficulty.
+Our first challenge was adding a level of complexity to the game while keeping a simple, user friendly interface. After going through several options yes/no system was the best one we could think of that is simple yet engaging. 
 
-The incorporation of animal characters and a moving window mechanism in the character roster were pivotal in ensuring diverse and engaging gameplay. The team's adaptability and collaborative problem-solving enabled us to transform the traditional N-back task into a captivating cognitive game.
+Deciding on the difficulty levels and corresponding levels for the difficulty segments was another roadblock. The goal was to make the game harder with the levels while keeping it possible to play for normal humans. Even 5 back(remembering previous 5 objects in the sequence) proved to be almost impossible very quickly. We found anywhere between two to four backs to be a good amount. With 2 being easy for most people while 4 taking a longer time to master. 
+This takes us to the biggest challenge of the project: creating the algorithm for the progression. We ran into several issues making this and took a long time to get it to a point where we were happy with the ratio of “yes” and “no’s”. 
+
+One example is there is a large roster of 20 unique animals that can show up in the game. Just showing a random character every sequence makes the chance of the same animal showing up 2 steps before in the sequence very very low- meaning the player could just spam “no” and have a correct rate of 99%. This is not the most engaging so instead, after reworking and adjusting the algorithm 10 or so times, settled on a window that would gradually move forward in the roster of characters before looping around. Without going into detail this allows for a very good ratio of “yes” and “no’s” while allowing for every animal to show up. 
+
+Other than that the biggest challenges was learning technologies as most of the group had not done frontend work outside of a little bit of HTML/CSS so it took a while to learn everything. There were a lot of small problems regarding overall progression and design that we encountered but were solved through communication and collaboration.
+
 
 ---
 

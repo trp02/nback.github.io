@@ -42,7 +42,7 @@ function displayGameOver() {
     gameOverElement.style.color = 'red';
     gameOverElement.style.fontSize = '36px';
     document.getElementById('game-container').appendChild(gameOverElement);
-    if (seconds >= 300) {
+    if (seconds >= timePerLevel) {
           // Calculate the position for the pop-up window to be centered
           const width = 400; // Adjust as needed
           const height = 200; // Adjust as needed
@@ -50,7 +50,7 @@ function displayGameOver() {
           const top = (window.innerHeight - height) / 2;
   
           // Open a pop-up window in the center
-          const popup = window.open('', 'PopupWindow', `width=${width},height=${height},left=${left},top=${top}`);
+          const popup = window.open('', 'PopupWindow', `width=${width},height=${height},left=${left},top=${top}, popup=yes`);
           
           // Display a message in the pop-up
           popup.document.write(`
@@ -58,18 +58,20 @@ function displayGameOver() {
           <head>
             <style>
               body {
-                background-color: white; /* Change the background color */
-                color: #00BFFF; /* Change the text color */
+                background-color: rgb(181, 241, 197); /* Change the background color */
+                color: blue; /* Change the text color */
                 font-family: Arial, sans-serif; /* Specify the font-family */
+                font-size: 10px;
               }
             </style>
           </head>
           <body>
             <h1>Congratulations!! You have passed all the Phase!!</h1>
+            <h2>Your game is over.</h2>
           </body>
           </html>
         `);
-          popup.document.write('<p>Your game is over.</p>');
+          //popup.document.write('<p>Your game is over.</p>');
   
           // Close the pop-up after 5 seconds (adjust as needed)
           setTimeout(function() {
