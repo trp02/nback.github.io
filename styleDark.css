@@ -1,0 +1,231 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1a1a1a; 
+    color: #eee; 
+}
+
+#game-container {
+    width: 305px; 
+    overflow: hidden; 
+    white-space: nowrap;
+    padding: 150px;
+    background-color: #333; 
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 5px;
+    background-color: #333; 
+    color: #eee; 
+    border: 2px solid #666; 
+}
+
+button:hover{
+    background-color: #696969; 
+}
+
+#char-display {
+    font-size: 200px;
+    margin: 20px;
+}
+
+#window-title{
+    font-size: 50px;
+    position: fixed;
+    top: 200px;
+    margin-left: -30px;
+    align-items: center;
+    justify-content: center;
+    color: #eee;
+}
+
+#correct-count{
+    font-size: 20px;
+    color: #4CAF50; 
+}
+
+#incorrect-count{
+    font-size: 20px;
+    color: #FF5733; 
+}
+
+
+.instructions {
+    display: block;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    white-space: normal;
+    overflow: hidden;
+}
+
+.instructions-content {
+    font-size: auto;
+    background-color: #333; 
+    color: #eee; 
+    margin: 15% auto;
+    padding: 25px;
+    border: 1px solid #575757;
+    border-radius: 5px;
+    max-width: 20%;
+    height: 45%;
+    position: relative;
+    text-align: center;
+    font-family: "Arial";
+    overflow: auto;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.close {
+    top: 10px;
+    right: 10px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.centered {
+    text-align: center;
+}
+
+.radio-box {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.radio-box label {
+    border-radius: 4px;
+    display: block;
+    border: 2px solid #eee; 
+    padding: 10px;
+    cursor: pointer;
+}
+
+
+.radio-box input:checked + label {
+    background-color: #648FFF;
+    color: #fff; 
+    border: 2px solid #a7a6a6;
+}
+
+
+.radio-box:hover label{
+    background-color: #648FFF;
+    color: #fff; 
+}
+
+
+.radio-box input {
+    display: none;
+}
+
+.difficulty_submit {
+    font-family: sans-serif;
+    font-size: 20px;
+    width: 30%;
+    height: 50%;
+    border-radius: 5px;
+    background-color: #444; 
+    color: #eee; 
+    padding: 10px;
+}
+
+.difficulty_submit:hover {
+    background-color: #78E493; 
+    color: #000000;
+}
+
+
+#time-bar-container {
+    width: 100%;
+    height: 20px; 
+    background-color: #ffffff; 
+}
+
+
+#time-bar {
+    height: 100%;
+    width: 100%;
+    background-color: #4CAF50;
+    transition: none;
+}
+
+/* The switch - the box around the slider */
+/* CODE FROM W3 TUTORIALS */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    }
+    
+    /* Hide default HTML checkbox */
+    .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    }
+    
+    /* The slider */
+    .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    }
+    
+    .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    }
+    
+    input:checked + .slider {
+    background-color: #000000;
+    }
+    
+    
+    input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+    }
+    
+    /* Rounded sliders */
+    .slider.round {
+    border-radius: 34px;
+    }
+    
+    .slider.round:before {
+    border-radius: 50%;
+    }
+    /* FROM W3 SCHOOL END */

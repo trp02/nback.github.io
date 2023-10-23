@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2-Back Game</title>
+    <link rel="stylesheet" id="stylesheet" href="style.css">
+</head>
+<body>
+   
+    
+     <!-- Actual game -->
+    <div id="game-container">
+        
+        <h1>N-BACK GAME: Phase 3</h1>
+        <div id="correct-count">Correct: 0</div>
+        <div id="incorrect-count">Incorrect: 0</div>
+        <div id="timer-display">Game-Time:<span id="timer">0</span></div>
+
+        <p id="char-display"></p>
+        <button onclick="checkMatch(true)">Yes</button>
+        <button onclick="checkMatch(false)">No</button>
+        <p id="result-display">&zwnj;</p> <!-- invisibe character so it dosen't move entire page-->
+        <div id="time-bar-container"><!-- Timer bar -->
+        <div id="time-bar"> </div>
+           
+
+        </div>
+        <button id="exit-button" onclick="redirectToIndex()">Exit</button>
+    </div>
+    
+
+
+    <script src="hard.js"></script>
+</body>
+</html>
+

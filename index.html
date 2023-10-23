@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2-Back Game</title>
+    <link rel="stylesheet" id="stylesheet" href="style.css">
+</head>
+<body>
+   <!-- Pop up for instructions -->
+    <div id="instructions" class="instructions">
+        <div class="instructions-content">
+            <h2 class = "centered">How to Play</h2>
+            <p>N-Back is a training game for your brain that will challenge your memory and attention. </p>
+            </p>You will be shown animals in a randomized sequence and your task is to determine if the current animal matches the one two steps back in the sequence. 
+                If it is press Yes, otherwise press No. </p>
+            <!-- Area to choose difficulty -->
+            <form id="difficulty">    
+                <h3>Select Difficulty:</h3>
+                <div class="radio-box">
+                    <input type="radio" id="easy" name="difficulty" value="Easy">
+                    <label for="easy">Easy</label>
+                </div>
+                <div class="radio-box">
+                    <input type="radio" id="medium" name="difficulty" value="Medium">
+                    <label for="medium">Medium</label>
+                </div>
+                <div class="radio-box">
+                    <input type="radio" id="hard" name="difficulty" value="Hard">
+                    <label for="hard">Hard</label>
+                </div>
+                <br><br><br>
+                <input class="difficulty_submit" type="submit" value="START" id="start-button">
+                <br><br>
+                <!-- Toggle for light/dark mode -->
+                <label class="switch">
+                    <input type="checkbox" id="mode-toggle">
+                    <span class="slider round"></span>
+                </label>
+                
+            </form>
+
+        </div>
+    </div>
+    
+     <!-- Actual game -->
+    <div id="game-container">
+        
+        <h1>N-BACK GAME:Phase 1</h1>
+       
+        <div id="correct-count">Correct: 0</div>
+        <div id="incorrect-count">Incorrect: 0</div>
+        <div id="timer-display">Game-Time:<span id="timer">0</span></div>
+
+        <p id="char-display"></p>
+        <button onclick="checkMatch(true)">Yes</button>
+        <button onclick="checkMatch(false)">No</button>
+        <p id="result-display">&zwnj;</p> <!-- invisibe character so it dosen't move entire page-->
+        <div id="time-bar-container"><!-- Timer bar -->
+        <div id="time-bar"> </div>
+
+        </div>
+        <button id="exit-button" onclick="redirectToIndex()">Exit</button> 
+    </div>
+    
+    
+
+    <script src="easy_level.js"></script>
+</body>
+</html>
+
